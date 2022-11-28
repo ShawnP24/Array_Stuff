@@ -1,0 +1,132 @@
+import java.util.Random;
+import java.util.Scanner;
+public class ArrayStuff {
+    public static void main(String[] args){
+        int dataPoints[] = new int [100];
+        Random rnd = new Random();
+        for(int i=0; i<100; i++)
+        {
+            dataPoints[i]=rnd.nextInt(100) + 1;
+        }
+        System.out.println("Elements of array: ");
+        for (int i=0; i<100; i++)
+        {
+            System.out.print(dataPoints[i]+ "|");
+        }
+        double sum=0;
+        for (int i=0; i<dataPoints.length; i++)
+        {
+
+            sum+=dataPoints[i];
+
+        }
+        double avg=sum/dataPoints.length;
+        System.out.println("Sum of elements in dataPoint array is "+sum);
+        System.out.println("Average of elements in dataPoint array is "+avg);
+        System.out.println("Enter a number between 1 & 100");
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int count=0;
+        for(int i=0;i<dataPoints.length;i++)
+        {
+            if(n==dataPoints[i])
+                count++;
+        }
+        System.out.println(n+" occurs in the array for "+count+" times");
+        System.out.println("Enter a value between 1 and 100");
+        n=sc.nextInt();
+        for(int i=0;i<dataPoints.length;i++)
+        {
+            if(n==dataPoints[i])
+            {
+                System.out.println(n+" found at position "+i);
+                break;
+            }
+            if(i==99)
+                System.out.println(n+" not found in the array");
+        }
+        int min=dataPoints[0];
+        int max=dataPoints[0];
+        for(int i=0;i<dataPoints.length;i++)
+        {
+            if(min>dataPoints[i])
+            {
+                min=dataPoints[i];
+            }
+            if(max<dataPoints[i])
+            {
+                max=dataPoints[i];
+            }
+        }
+        System.out.println("Min and Max values of dataArray are "+ " " + min + " " + max);
+        System.out.println("Average of dataPoints is: " + getAverage(dataPoints));
+        System.out.println("\nSumm of data points is: "+sum(dataPoints));
+        System.out.println("Minimum value of data points is: " + min(dataPoints));
+        System.out.println("Maximum value of data points is "+max(dataPoints));
+        System.out.println("Number of occurances of 5 in dataArray is "+occuranceScan(dataPoints, 5));
+        System.out.println("Number 90 is contained in the data points:  "+contains(dataPoints, 90));
+    }
+    public static double getAverage(int values[])
+    {
+        double sum=0;
+        for(int i=0;i<values.length;i++)
+            sum+=values[i];
+        return sum/values.length;
+    }
+    public static int min(int values[])
+    {
+        int min=values[0];
+        for(int i=0;i<values.length;i++)
+        {
+            if(min>values[i])
+            {
+                min=values[i];
+            }
+        }
+        return min;
+    }
+    public static int max(int values[])
+    {
+        int max=values[0];
+        for(int i=0;i<values.length;i++)
+        {
+            if(max<values[i])
+            {
+                max=values[i];
+            }
+        }
+        return max;
+    }
+    public static int occuranceScan(int values[], int target)
+    {
+        int count=0;
+        for(int i=0;i<values.length;i++)
+        {
+            if(target==values[i])
+                count++;
+        }
+        return count;
+    }
+    public static int sum(int values[])
+    {
+        int sum=0;
+        for(int i=0;i<values.length;i++)
+        {
+            sum+=values[i];
+
+        }
+        return sum;
+    }
+    public static boolean contains(int values[], int target)
+    {
+        for(int i=0;i<values.length;i++)
+        {
+            if(target==values[i])
+            {
+                return true;
+
+            }
+        }
+        return false;
+    }
+}
